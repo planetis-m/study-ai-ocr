@@ -12,9 +12,20 @@ Instructions:
 CRITICAL MERMAID SYNTAX RULES (To prevent rendering errors):
 1. First line must be exactly `mindmap` with no other text.
 2. Hierarchy is defined STRICTLY by indentation (spaces). NEVER use markdown bullets (`-`, `*`, or `+`).
-3. Keep node labels purely alphanumeric. DO NOT use parentheses `()`, brackets `[]`, braces `{}`, quotes `"`, or colons `:` inside the node text. These are reserved shape characters and will crash the parser.
-4. DO NOT use LaTeX math (`$...$`) inside the diagram. It will not render.
-5. Keep labels extremely concise (1-6 words).
+3. Use normal English words WITH SPACES for readability (e.g., `Introduction to Psychology`, NOT `IntroductionToPsychology`).
+4. Do NOT use shape wrappers or Node IDs. Just write the plain text directly at the correct indentation level (e.g., use `Ancient Beliefs`, NOT `A[Ancient Beliefs]` or `root(Ancient Beliefs)`).
+5. Keep node labels purely alphanumeric with spaces. DO NOT use parentheses `()`, brackets `[]`, braces `{}`, quotes `"`, or colons `:` anywhere. These crash the parser.
+6. Keep labels concise (1-6 words).
+
+```mermaid
+mindmap
+  Central Theme
+    Main Topic One
+      Sub Topic A
+      Sub Topic B
+    Main Topic Two
+      Sub Topic C
+```
 
 {{args}}
 """
