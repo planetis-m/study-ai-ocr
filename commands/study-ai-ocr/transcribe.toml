@@ -9,6 +9,7 @@ NEVER use `read_file` or native file reading tools on PDFs. Parse the JSONL stdo
 Instructions:
 - Work ONLY with provided content—NEVER add external information or examples.
 - CRITICAL: Output the educational text VERBATIM. Do NOT summarize, paraphrase, simplify, or shorten the sentences.
+- Maintain the original bullet points exactly as they appear in the text.
 - Use proper markdown formatting with headers and structure as it appears in the slides.
 - Use LaTeX math with `$...$` for inline and `$$...$$` for display equations.
 - Never include introductory or concluding remarks (no "Here is the transcription...", etc.).
