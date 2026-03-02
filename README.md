@@ -1,9 +1,7 @@
 # Study-AI Qwen Code Extension
 
 ## Overview
-The extension helps students prepare for exams by processing lecture PDF slides in a two-stage pipeline:
-1. **Preprocessing**: Clean and extract content from PDFs using the `pdfocr` vision model tool.
-2. **Analysis**: Generate structured study notes with key topics and explanations.
+The extension helps students prepare for exams by processing lecture PDF slides. It uses the `pdfocr` vision model tool to natively read slides and generate structured study notes, quizzes, and essay questions.
 
 ## Setup Instructions
 
@@ -131,8 +129,9 @@ cd <workspace>
 
 ```
 study-ai/
-├── AGENTS.md            # Context file with assistant behavior
-├── qwen-extension.json  # Extension config
+├── AGENTS.md              # Context file with assistant behavior
+├── gemini-extension.json  # Gemini extension config
+├── qwen-extension.json    # Qwen extension config
 └── commands/
     └── study-ai/
         ├── extract.toml      # Basic preprocessing command using pdfocr
@@ -144,7 +143,7 @@ study-ai/
 
 ## Key Design Decisions
 
-1. **Separation of Concerns**: Commands are separated into discrete stages (clean, analyze) while also providing a convenient combined command (study-notes).
+1. **Separation of Concerns**: Commands are separated into discrete stages (extract, analyze) while also providing a convenient combined command (study-notes).
 2. **Flexible Input**: Users can either pass PDF files directly or paste pre-extracted text for analysis.
 3. **Context-Driven Behavior**: The `AGENTS.md` file establishes the assistant's role and behavior patterns, which commands reinforce through their specific prompts.
 4. **Integration with pdfocr**: Commands leverage the `@planetis-m/pdfocr` CLI tool for highly accurate, vision-based text extraction and layout preservation, streamlining the extraction process.

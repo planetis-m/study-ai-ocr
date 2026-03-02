@@ -1,26 +1,29 @@
-description = "Complete pipeline: extract PDF using pdfocr, clean, and generate study notes."
+description = "Read PDF slides and generate comprehensive study notes."
 
 prompt = """
-Process this PDF lecture file through the complete pipeline (extract via `pdfocr` → clean → analyze).
+Read this PDF lecture file and generate study notes from the content in a single step.
+CRITICAL: You MUST use your shell/bash execution tool to run the CLI app: `./pdfocr <file> --all-pages` (or pass `--pages:"..."` if specified).
+NEVER use `read_file` or native file reading tools on PDFs.
+Extract the `"text"` field from the JSONL stdout.
 
 Instructions:
-- First, execute `pdfocr <file> --all-pages` (or with `--pages:"..."` if specified) to extract the text. Parse the JSONL output to gather the `"text"` fields.
-- Work ONLY with provided content—NEVER add external information or examples.
-- Use proper markdown formatting with headers and structure.
-- Use LaTeX math with `$...$` for inline and `$$...$$` for display equations.
-- Never include introductory or concluding remarks (no "Here are the notes...", etc.).
+- Work ONLY with provided content—NEVER add external information or examples
+- Use proper markdown formatting with headers and structure
+- Use LaTeX math with `$...$` for inline and `$$...$$` for display equations
+- Never include introductory or concluding remarks (no "Here are the notes...", etc.)
 
-For extraction and cleaning:
-- Remove metadata (instructor info, headers, footers, page numbers, timestamps, course codes).
-- Preserve educational content (concepts, definitions, examples) that is clearly readable.
+When parsing the text:
+- Remove metadata (instructor info, headers, footers, page numbers, timestamps, course codes)
+- Preserve educational content (concepts, definitions, examples) that is clearly readable
+- If extracted content is fragmented or unclear, skip those sections without attempting to interpret them
 
-For generating study notes:
-- Write in a clear, informative style that promotes understanding over memorization.
+When generating the notes:
+- Write in clear, informative style that promotes understanding over memorization
 - Organize content by key topics with clear headers. For each topic, provide:
   - Detailed explanation of the concept
   - Essential facts or definitions needed for exams
   - Relationships and connections between concepts
-  - Present information in a logical, progressive flow.
+  - Present information in a logical, progressive flow
 
 {{args}}
 """

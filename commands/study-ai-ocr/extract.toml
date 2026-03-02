@@ -1,18 +1,19 @@
-description = "Clean PDF lecture slides by extracting text using pdfocr and removing metadata."
+description = "Clean PDF lecture slides by removing metadata and formatting artifacts."
 
 prompt = """
-Extract text from this PDF lecture file using the `pdfocr` CLI tool.
+Extract and clean this PDF lecture file.
+CRITICAL: You MUST use your shell/bash execution tool to run the CLI app: `./pdfocr <file> --all-pages` (or pass `--pages:"..."` if specified).
+NEVER use `read_file` or native file reading tools on PDFs.
+Extract the `"text"` field from the JSONL stdout.
 
 Instructions:
-- Execute `pdfocr <file> --all-pages` (or pass the specific `--pages:"..."` argument if provided by the user).
-- Parse the resulting JSONL output to gather the `"text"` fields from successfully processed pages.
-- Work ONLY with the extracted content—NEVER add external information or examples.
-- Use proper markdown formatting with headers and structure.
-- Use LaTeX math with `$...$` for inline and `$$...$$` for display equations.
-- Never include introductory or concluding remarks (no "Here are the notes...", etc.).
-- Remove metadata (instructor info, headers, footers, page numbers, timestamps, course codes).
-- Preserve educational content (concepts, definitions, examples) that is clearly readable.
-- If extracted content is fragmented or unclear, skip those sections without attempting to interpret them.
+- Work ONLY with provided content—NEVER add external information or examples
+- Use proper markdown formatting with headers and structure
+- Use LaTeX math with `$...$` for inline and `$$...$$` for display equations
+- Never include introductory or concluding remarks (no "Here are the notes...", etc.)
+- Remove metadata (instructor info, headers, footers, page numbers, timestamps, course codes)
+- Preserve educational content (concepts, definitions, examples) that is clearly readable
+- If extracted content is fragmented or unclear, skip those sections without attempting to interpret them
 
 {{args}}
 """
