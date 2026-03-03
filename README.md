@@ -1,3 +1,5 @@
+**Deprecated:** Moved to SKILL architecture, provides caching and easy setup: <https://github.com/planetis-m/study-assistant>
+
 # Study Qwen Code Extension
 
 ## Overview
